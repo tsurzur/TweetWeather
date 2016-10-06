@@ -9,14 +9,12 @@ import urllib2
 # s_date: 指定日付（現在から５日後まで）
 def set_weather_info(url, s_area, s_date):
     # sitemap.xmlを取得する
-    if s_area == '兵庫県南部':
-        area_label = 28
-    elif s_area == '大阪府':
-        area_label = 27
-    elif s_area == '東京都':
-        area_label = 13
-
-    prefacture_xml = urllib2.urlopen(url + '/' + str(area_label) + '.xml').read()
+    area_label = {
+      '東京都':13,
+      '大阪府':27,
+      '兵庫県南部':28
+    }
+    prefacture_xml = urllib2.urlopen(url + '/' + str(area_label[s_area]) + '.xml').read()
     file_xml = minidom.parseString(prefacture_xml)
 
     # 指定エリアの情報を取得
