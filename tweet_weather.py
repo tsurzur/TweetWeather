@@ -31,6 +31,8 @@ def predict_weather(url, area, str_date, name_date):
         message_weather = message_rain + 'となっています。'
         if int(rain_chance) > 30 :
             message_weather += '雨にお気をつけて！'
+        else if '晴れ' in weather_name :
+            message_weather += 'くもりもありますが晴れるので頑張っていきましょう！'
         else :
             message_weather += 'どんより天気ですが頑張っていきましょう！'
     else :
